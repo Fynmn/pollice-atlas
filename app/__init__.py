@@ -15,9 +15,9 @@ elif os.environ.get('FLASK_ENV') == 'testing':
 else:
     app.config.from_object('config.ProductionConfig')
     
-# client = pymongo.MongoClient('localhost', 27017)
+client = pymongo.MongoClient('localhost', 27017)
 # client = pymongo.MongoClient("mongodb://fynmn:October05@cluster0-shard-00-00.2fb7q.mongodb.net:27017,cluster0-shard-00-01.2fb7q.mongodb.net:27017,cluster0-shard-00-02.2fb7q.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-192j1z-shard-0&authSource=admin&retryWrites=true&w=majority")
-client = pymongo.MongoClient("mongodb://fynmn:October05@cluster0-shard-00-00.2fb7q.mongodb.net:27017,cluster0-shard-00-01.2fb7q.mongodb.net:27017,cluster0-shard-00-02.2fb7q.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-192j1z-shard-0&authSource=admin&retryWrites=true&w=majority")
+# client = pymongo.MongoClient("mongodb://fynmn:October05@cluster0-shard-00-00.2fb7q.mongodb.net:27017,cluster0-shard-00-01.2fb7q.mongodb.net:27017,cluster0-shard-00-02.2fb7q.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-192j1z-shard-0&authSource=admin&retryWrites=true&w=majority")
 db = client.get_database('election-system-test')
 user_records = db.users
 admins_records = db.admins

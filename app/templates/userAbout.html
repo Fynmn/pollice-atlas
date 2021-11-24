@@ -126,6 +126,44 @@
             </div>
         </div>
     </div>
+    <div class="sm:p-6 sm:pt-0 lg:pt-0 w-screen h-auto">
+        <!-- Content -->
+        <div class="filter backdrop-blur-3xl p-5 mb-12 border border-white shadow-lg" style=" background: linear-gradient(118.32deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.06) 100%);
+                backdrop-filter: blur(1000px);
+                border-radius: 16px;">
+            <div class="relative flex place-items-start flex-nowrap flex-col w-auto p-4 space-y-4 ">
+                <div class="w-full relative flex flex-col justify-center items-center">
+                    <h4 class="flex justify-start w-auto h-auto p-2 pl-4 pr-4 text-white font-normal text-lg rounded sm:w-auto "
+                        style="background: #E2502B;">
+                        Special Contributors
+                    </h4>
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 mt-5">
+                        <div class="flex flex-col items-center p-4 w-auto h-full">
+                            <img src="{{ url_for('static', filename='img/app-contributors/Sir Mark Solidarios.jpg') }}" class="w-20 h-20 m-2 rounded-full" alt="">
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base font-medium flex justify-center text-center">Mark Joseph Solidarios</p>
+                                <p class="text-xs flex justify-center text-center">Contributor</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center p-4 w-full h-full">
+                            <img src="{{ url_for('static', filename='img/app-contributors/Carlo Taleon.jpg') }}" class="w-20 h-20 m-2 rounded-full" alt="">
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base font-medium flex justify-center text-center">Carlo Antonio Taleon</p>
+                                <p class="text-xs flex justify-center text-center">Contributor</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center p-4 w-full h-full">
+                            <img src="{{ url_for('static', filename='img/app-contributors/Mark Atinon.jpg') }}" class="w-20 h-20 m-2 rounded-full" alt="">
+                            <div class="flex flex-col justify-center">
+                                <p class="text-base font-medium flex justify-center text-center">Mark Vincent Atinon</p>
+                                <p class="text-xs flex justify-center text-center">Contributor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

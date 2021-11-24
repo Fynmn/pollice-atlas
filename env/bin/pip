@@ -1,4 +1,4 @@
-#!/home/njane/Desktop/pollice-atlas/env/bin/python
+#!/Users/jedadriandenosta/Desktop/Personal-Projects/pollice-atlas/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
