@@ -194,7 +194,10 @@ def login():
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
     if "email" in session:
-        session.clear()
+        # session.clear()
+        session.pop('email')
+        session.pop('name')
+        session.pop('section')
 
         return redirect(url_for('login'))
     else:
@@ -219,8 +222,8 @@ def admin_login():
         password = request.form.get("admin_password")
 
         username_found = admins_records.find_one({"username": username})
-        session["admin_username"] = username
-        admin_username = session["admin_username"]
+        # session["admin_username"] = username
+        
 
         if username_found:
             username_val = username_found['username']
@@ -228,16 +231,17 @@ def admin_login():
 
             if passwordcheck:
                 session["admin_username"] = username
+                admin_username = session["admin_username"]
 
                 return redirect(url_for('admin_panel'))
             else:
                     # if "admin_username" in session:
                     #     return redirect(url_for("admin_panel"))
                 message = 'Wrong password'
-                return render_template('adminLogin.html', message=message, admin_username=admin_username)
+                return render_template('adminLogin.html', message=message)
         else:
             message = 'Username not found'
-            return render_template('adminLogin.html', message=message, admin_username=admin_username)
+            return render_template('adminLogin.html', message=message)
     else:
         return render_template('adminLogin.html', message=message)
 
@@ -253,7 +257,8 @@ def admin_panel():
 @app.route("/admin_logout", methods=["POST", "GET"])
 def admin_logout():
     if "admin_username" in session:
-        session.clear()
+        # session.clear()
+        session.pop('admin_username')
 
         return redirect(url_for('admin_panel'))
     else:
@@ -264,7 +269,7 @@ def admin_logout():
 def viewCandidate():
     if "admin_username" in session:
         admin_username = session["admin_username"].title()
-        from bson.json_util import dumps, loads
+        # from bson.json_util import dumps, loads
         result = list(model.pullListOfCandidates())
         # print(result)
 

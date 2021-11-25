@@ -204,11 +204,11 @@
                             <p class="flex flex-col items-center justify-center">or</p>
                         </div>
 
-                        <a href="/login" class="flex flex-col items-center justify-center border text-sm p-1 px-10 rounded-md w-full md:text-base lg:max-w-lg" style="color: #333333;">
-                            <button>
+                        <div class="flex flex-col items-center justify-center border text-sm p-1 px-10 rounded-md w-full md:text-base lg:max-w-lg" style="color: #333333;">
+                            <button id="userLogin_btn">
                                 Log in
                             </button>
-                        </a>
+                        </div>
                     </div>
                 </div>
         </form>
@@ -216,8 +216,12 @@
     </div>
 
     <script>
-        const passwordToggle1 = document.querySelector('.js-password-toggle1')
 
+        document.getElementById("userLogin_btn").onclick = function() {
+                    location.href = "{{ url_for('login') }}";
+        };
+
+        const passwordToggle1 = document.querySelector('.js-password-toggle1')
 
         passwordToggle1.addEventListener('change', function() {
             const password1 = document.querySelector('.js-password1'),
