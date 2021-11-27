@@ -458,63 +458,9 @@ def vote():
             
             else:
                 voted = True
-            
-            
-
-        
-        
-        # listOfCandidates = model.pullCandidates()
-        # print(listOfCandidates)
-        # chairperson = []
-        # vice_chairperson = []
-        # secretary = []
-        # assistant_secretary = []
-        # treasurer = []
-        # assistant_treasurer = []
-        # auditor = []
-        # assistant_auditor = []
-        # business_manager = []
-        # assistant_business_manager = []
-        # pio = []
-        # assistant_pio = []
-        # representative1 = []
-        # representative2 = []
-
-        # x = True
-        # while x:
-        #     for num, i in enumerate(listOfCandidates):
-        #         if i[1] == "chairperson":
-        #             chairperson.append(i[0])
-        #         elif i[1] == "vice_chairperson":
-        #             vice_chairperson.append(i[0])
-        #         elif i[1] == "secretary":
-        #             secretary.append(i[0])
-        #         elif i[1] == "assistant_secretary":
-        #             assistant_secretary.append(i[0])
-        #         elif i[1] == "treasurer":
-        #             treasurer.append(i[0])
-        #         elif i[1] == "assistant_treasurer":
-        #             assistant_treasurer.append(i[0])
-        #         elif i[1] == "auditor":
-        #             auditor.append(i[0])
-        #         elif i[1] == "assistant_auditor":
-        #             assistant_auditor.append(i[0])
-        #         elif i[1] == "business_manager":
-        #             business_manager.append(i[0])
-        #         elif i[1] == "assistant_business_manager":
-        #             assistant_business_manager.append(i[0])
-        #         elif i[1] == "pio":
-        #             pio.append(i[0])
-        #         elif i[1] == "assistant_pio":
-        #             assistant_pio.append(i[0])
-        #         elif i[1] == "representative1":
-        #             representative1.append(i[0])
-        #         elif i[1] == "representative2":
-        #             representative2.append(i[0])
-        #     x = False
 
 
-        if request.method == "POST":
+        elif request.method == "POST":
             if "okay_btn" in request.form:
 
                 # v = request.form["position"]
