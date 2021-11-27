@@ -25,21 +25,6 @@ from app.models import *
 
 model = Models()  # instance of the Model Class
 
-# client = pymongo.MongoClient("mongodb://fynmn:October05@cluster0-shard-00-00.2fb7q.mongodb.net:27017,cluster0-shard-00-01.2fb7q.mongodb.net:27017,cluster0-shard-00-02.2fb7q.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-192j1z-shard-0&authSource=admin&retryWrites=true&w=majority")
-#client = pymongo.MongoClient("mongodb+srv://fynmn:October05@cluster0.2fb7q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-
-
-# client = pymongo.MongoClient('localhost', 27017)
-# db = client.get_database('election-system-test')
-
-
-# admins_records = db.admins
-# candidates_records = db.candidates
-# posts_records = db.posts
-# users_records = db.users
-# votes_records = db.votes
-# voting_status = db.voting_status
-
 user_created = False
 voted = False
 
@@ -127,12 +112,9 @@ def create_account():
             session["email"] = new_email
             session["section"] = section
             session["name"] = user
-            # session["voted"] = False
-            username = session["name"].split(" ")
-            usn = username[0]
 
             return redirect(url_for('logged_in'))
-            # return render_template('userHome.html', email=new_email, user=usn)
+
     return render_template('userCreateAccount.html')
 
 
@@ -144,7 +126,6 @@ def logged_in():
         user = session["name"].split(" ")
         usn = user[0]
         posts = model.getPosts()
-        # print(posts)
         return render_template('userHome.html', posts=posts, email=email, section=section, user=usn)
         
     else:
@@ -219,29 +200,25 @@ def admin_login():
 
     if request.method == "POST":
         username = request.form.get("admin_username")
-        password = request.form.get("admin_password")
 
         username_found = admins_records.find_one({"username": username})
-        # session["admin_username"] = username
         
-
         if username_found:
-            username_val = username_found['username']
             passwordcheck = username_found['password']
 
             if passwordcheck:
                 session["admin_username"] = username
-                admin_username = session["admin_username"]
 
                 return redirect(url_for('admin_panel'))
+
             else:
-                    # if "admin_username" in session:
-                    #     return redirect(url_for("admin_panel"))
                 message = 'Wrong password'
                 return render_template('adminLogin.html', message=message)
+
         else:
             message = 'Username not found'
             return render_template('adminLogin.html', message=message)
+
     else:
         return render_template('adminLogin.html', message=message)
 
@@ -269,9 +246,7 @@ def admin_logout():
 def viewCandidate():
     if "admin_username" in session:
         admin_username = session["admin_username"].title()
-        # from bson.json_util import dumps, loads
         result = list(model.pullListOfCandidates())
-        # print(result)
 
         party1 = []
         party2 = []
@@ -308,11 +283,6 @@ def viewCandidate():
                 [" ".join(party3[i]["position"].split("_")).upper()]]
             party3_list.append(party3Item)
 
-        # print(party1_list)
-        # print(party2_list)
-        # print(party3_list)
-        # return render_template("admin_viewCan.html")
-
         return render_template("adminView.html", admin_username=admin_username, party1=party1_list, party2=party2_list, party3=party3_list)
     
     else:
@@ -323,11 +293,6 @@ def viewCandidate():
 def addCandidate():
     if "admin_username" in session:
         admin_username = session["admin_username"].title()
-        # model.getPosts()
-
-        #get specific voting enabled status in mongodb
-        #if true then check is = checked
-        #if false then check is empty
         status = voting_status.find_one({"voting_status_id": "0001"})
 
         if status['voting_enabled'] == 'true':
@@ -339,7 +304,6 @@ def addCandidate():
         if request.method == "POST":
             if request.form.get("toggle_submit") == "Submit Status":
                 voting_enabled = request.form.get("toggle_switch")
-                # print("vt: ", voting_enabled)
 
                 if voting_enabled:
                     check = 'checked'
