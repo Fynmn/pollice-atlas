@@ -352,8 +352,6 @@ def addCandidate():
                     'year': candidate_year, "position": candidate_position, "name": candidate_name}
                 candidates_records.insert_one(admin_add)
 
-                # print(candidate_name, candidate_position, candidate_party, candidate_course, candidate_year)
-
                 return render_template("adminAdd.html", admin_username=admin_username, can_name=can_name, can_party=can_party, can_position=can_position)
 
             # triggeres when post is clicked
