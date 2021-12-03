@@ -378,8 +378,6 @@ def addCandidate():
                     post_add = {"post_id": "0001", "post_name": post_name, "post_details": post_details}
                     posts_records.insert_one(post_add)
                     return render_template("adminAdd.html", admin_username=admin_username, check=check)
-
-                # return redirect(url_for("admin/add"))
         
         return render_template("adminAdd.html", admin_username=admin_username, check=check)
 
@@ -462,7 +460,6 @@ def vote():
             if "okay_btn" in request.form:
 
                 # v = request.form["position"]
-                # print(v)
                 chairperson_vote = request.form.get("Chairperson")
                 vice_chairperson_vote = request.form.get("Vice Chairperson")
                 secretary_vote = request.form.get("Secretary")
